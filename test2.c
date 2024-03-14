@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:13:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/14 14:46:16 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/14 14:49:26 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(void)
 		*a = i;
 		if (pthread_create(&t[i], NULL, &prime, a) != 0)
 			perror("Failed to create the thread");
+		free(a);
 		i++;
 	}
 	i = 0;
