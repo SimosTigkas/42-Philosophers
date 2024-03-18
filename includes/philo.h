@@ -35,7 +35,7 @@ typedef struct s_table
 	long				time_to_sleep;
 	long				nbr_limit_meals;
 	long				philo_nbr;
-    t_philo                *philos;
+    t_philo             *philos;
 }	t_table;
 
 typedef struct s_philo
