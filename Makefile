@@ -1,6 +1,6 @@
 NAME = philo
 
-FUNC = test.c
+FUNC = init_data.c getting_input.c utils.c main_philo.c
 
 INC = includes
 
@@ -15,7 +15,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) -I $(INC) $(OBJ) -o $(PHILO)
-	chmod +x $(PHILO)
 
 $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
