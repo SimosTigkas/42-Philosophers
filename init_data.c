@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 14:56:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/18 17:56:05 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/18 18:13:22 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	init_the_philo(t_table *table)
 	i = 0;
 	while (i < table->philo_nbr)
 	{
+		philo = table->philos + i;
 		philo->id = i + 1;
 		philo->full = 0;
 		philo->meals_counter = 0;
