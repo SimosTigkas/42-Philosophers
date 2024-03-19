@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/19 19:52:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/19 20:01:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <sys/time.h>
-# include <limits.h>
 # define MAX_INT 2147483647
 
 typedef struct s_fork
@@ -38,11 +37,9 @@ typedef struct s_table
 	long				start_simulation;
 	bool				end_simulation;
 	bool				threads_ready;
-	pthread_t			monitor;
 	t_fork				*forks;
     t_philo             *philos;
 	pthread_mutex_t		table_mtx;
-	pthread_mutex_t		write_mtx;
 }	t_table;
 
 typedef struct s_philo
