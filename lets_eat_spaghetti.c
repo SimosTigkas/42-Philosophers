@@ -17,7 +17,7 @@ void *simulation(void *data)
     t_philo *philo;
 
     philo = (t_philo *)data;
-    wait_the_threads_to_be_ready(philo->table); //do it today
+    wait_the_threads_to_be_ready(philo->table);
 }
 
 void    lets_eat_spaghetti(t_table *table)
