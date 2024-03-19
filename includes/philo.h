@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/18 18:00:34 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/19 19:52:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,26 @@ typedef struct s_table
 	long				time_to_sleep;
 	long				nbr_limit_meals;
 	long				philo_nbr;
+	long				start_simulation;
+	bool				end_simulation;
+	bool				threads_ready;
+	pthread_t			monitor;
+	t_fork				*forks;
     t_philo             *philos;
+	pthread_mutex_t		table_mtx;
+	pthread_mutex_t		write_mtx;
 }	t_table;
 
 typedef struct s_philo
 {
 	int				id;
-	int				full;
+	bool			full;
 	long			meals_counter;
+	long			time_from_last_meal;
+	t_fork			*first_fork;
+	t_fork			*second_fork;
+	pthread_t		thread_id;
+	t_table			*table;
 }	t_philo;
 
 typedef enum e_state
@@ -74,5 +86,13 @@ void	ft_error(char *msg);
 void	get_input(t_table *table, char **av);
 void	init_data(t_table *table);
 void	mutex_hander(pthread_mutex_t mtx, t_mtx_action act);
+void	thread_hander(pthread_t *thread, void *(*routine)(void *), void *data, t_thread_action act);
+void    lets_eat_spaghetti(t_table *table);
+long 	get_long(pthread_mutex_t *mtx, long value);
+void    set_long(pthread_mutex_t *mtx, long *target, long value);
+bool 	get_bool(pthread_mutex_t *mtx, bool status);
+void    set_bool(pthread_mutex_t *mtx, bool *target, bool status);
+void    wait_the_threads_to_be_ready(t_table *table);
+
 
 #endif

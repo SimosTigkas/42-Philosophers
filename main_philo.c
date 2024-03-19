@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_philo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:36:16 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/18 14:57:36 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/19 18:22:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int ac, char **av)
 	{
 		get_input(&table, av);
 		init_data(&table);
+		lets_eat_spaghetti(&table);
 	}
 	else
 	{

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
@@ -12,6 +12,23 @@
 
 #include "./includes/philo.h"
 
+static void get_the_forks(t_philo *philo, t_fork *forks, int i)
+{
+	int all_philos;
+
+	all_philos = philo->table->philo_nbr;
+	if ((philo->id % 2) == 0)
+	{
+		philo->first_fork = &forks[(i + 1) % all_philos];
+		philo->second_fork = &forks[i];
+	}
+	else
+	{
+		philo->first_fork = &forks[i];
+		philo->second_fork = &forks[(i + 1) % all_philos];
+	}
+}
+
 static void	init_the_philo(t_table *table)
 {
 	int		i;
@@ -22,9 +39,10 @@ static void	init_the_philo(t_table *table)
 	{
 		philo = table->philos + i;
 		philo->id = i + 1;
-		philo->full = 0;
+		philo->full = false;
 		philo->meals_counter = 0;
 		philo->table = table;
+		get_the_forks(philo, table, table->forks, i);
 		i++;
 	}
 }
@@ -34,10 +52,12 @@ void	init_data(t_table *table)
 	int	i;
 
 	i = 0;
-	table->end_simulation = -1;
+	table->end_simulation = false;
+	table->threads_ready = false;
 	table->philos = malloc((table->philo_nbr) * sizeof(t_philo *));
 	if (table->philos == NULL)
 		ft_error("Malloc error");
+	mutex_hander(table->table_mtx, INIT);
 	table->forks = malloc((table->philo_nbr) * sizeof(t_fork *));
 	if (table->forks == NULL)
 		ft_error("Malloc error");
