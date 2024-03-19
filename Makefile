@@ -1,6 +1,13 @@
 NAME = philo
 
-FUNC = init_data.c getting_input.c utils.c main_philo.c
+FUNC = \
+	init_data.c \
+	getting_input.c \
+	utils.c \
+	main_philo.c \
+	auto_lock_unlock.c \
+	lets_eat_spaghetti.c \
+	synchronization_utils.c
 
 INC = includes
 
