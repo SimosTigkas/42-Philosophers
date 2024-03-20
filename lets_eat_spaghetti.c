@@ -18,6 +18,16 @@ void *simulation(void *data)
 
     philo = (t_philo *)data;
     wait_the_threads_to_be_ready(philo->table);
+
+    while (!simulation_is_finished(philo->table))
+    {
+        if (!get_bool(philo->table.tavle_mtx, philo->full))
+            break ;
+        is_eating(philo); //will be done tomorrow
+        display_status(SLEEPING, philo);
+        ft_usleep(philo->table->time_to_sleep, philo->table);
+        is_thinking(philo); //will be done tomorrow
+    }
 }
 
 void    lets_eat_spaghetti(t_table *table)
@@ -38,5 +48,12 @@ void    lets_eat_spaghetti(t_table *table)
             i++;
         }
     }
+    table->start_simulation = get_time_of_day(MILLISEC);
     set_bool(&table->table_mtx, &table->threads_ready, true);
+    i = 0;
+    while (i < table->philo_nbr)
+    {
+        thread_hander(&table->philos[i].thread_id, NULL, NULL, JOIN);
+        i++;
+    }
 }

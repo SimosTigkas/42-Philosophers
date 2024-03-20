@@ -45,3 +45,8 @@ long get_long(pthread_mutex_t *mtx, long value)
     mutex_hander(mtx, UNLOCK);
     return (returning_value);
 }
+
+bool simulation_is_finished(t_table *table)
+{
+    return (get_bool(&table->table_mtx, &table->end_simulation));
+}

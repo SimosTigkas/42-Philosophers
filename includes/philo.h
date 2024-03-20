@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/19 20:01:52 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/20 13:09:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_table
 	t_fork				*forks;
     t_philo             *philos;
 	pthread_mutex_t		table_mtx;
+	pthread_mutex_t		display_mtx;
 }	t_table;
 
 typedef struct s_philo
@@ -59,8 +60,8 @@ typedef enum e_state
 	EATING,
 	SLEEPING,
 	THINKING,
-	TAKE_RIGHT_FORK,
-	TAKE_LEFT_FORK,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
 	DEAD
 }	t_state;
 
@@ -79,6 +80,13 @@ typedef enum e_thread_action
 	JOIN
 }	t_thread_action;
 
+typedef enum e_time
+{
+	SEC,
+	MILLISEC,
+	MICROSEC
+}	t_time;
+
 void	ft_error(char *msg);
 void	get_input(t_table *table, char **av);
 void	init_data(t_table *table);
@@ -90,6 +98,9 @@ void    set_long(pthread_mutex_t *mtx, long *target, long value);
 bool 	get_bool(pthread_mutex_t *mtx, bool status);
 void    set_bool(pthread_mutex_t *mtx, bool *target, bool status);
 void    wait_the_threads_to_be_ready(t_table *table);
-
+long 	get_time_of_day(t_time time);
+bool    simulation_is_finished(t_table *table);
+void 	ft_usleep(long usec, t_table *table);
+void 	display_status(t_state status, t_philo *philo);
 
 #endif
