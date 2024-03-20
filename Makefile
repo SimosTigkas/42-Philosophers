@@ -7,7 +7,8 @@ FUNC = \
 	main_philo.c \
 	auto_lock_unlock.c \
 	lets_eat_spaghetti.c \
-	synchronization_utils.c
+	synchronization_utils.c \
+	display.c
 
 INC = includes
 
