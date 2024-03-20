@@ -21,7 +21,7 @@ void *simulation(void *data)
 
     while (!simulation_is_finished(philo->table))
     {
-        if (!get_bool(philo->table.tavle_mtx, philo->full))
+        if (!get_bool(philo->table.table_mtx, philo->full))
             break ;
         is_eating(philo); //will be done tomorrow
         display_status(SLEEPING, philo);
