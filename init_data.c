@@ -59,6 +59,7 @@ void	init_data(t_table *table)
 		ft_error("Malloc error");
 	mutex_hander(&table->table_mtx, INIT);
 	mutex_hander(&table->display_mtx, INIT);
+	mutex_hander(&table->philos->philo_mtx, INIT);
 	table->forks = malloc((table->philo_nbr) * sizeof(t_fork *));
 	if (table->forks == NULL)
 		ft_error("Malloc error");

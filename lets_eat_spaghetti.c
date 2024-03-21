@@ -12,6 +12,23 @@
 
 #include "./includes/philo.h"
 
+static void is_eating(t_philo *philo)
+{
+    mutex_hander(&philo->first_fork->fork, LOCK);
+    display_status(TAKE_FIRST_FORK, philo);
+    mutex_hander(&philo->second_fork->fork, LOCK);
+    display_status(TAKE_SECOND_FORK, philo);
+    set_long(&philo->philo_mtx, &philo->time_from_last_meal, get_time_of_day(MILLISEC));
+    philo->meals_counter++;
+    display_status(EATING, philo);
+    ft_usleep(philo->table->time_to_eat, philo->table);
+    if (philo->table->nbr_limit_meals > 0
+        && philo->meals_counter == philo->table->nbr_limit_meals)
+        set_bool(&philo->philo_mtx, &philo->full, true);
+    mutex_hander(&philo->first_fork->fork, UNLOCK);
+    mutex_hander(&philo->second_fork->fork, UNLOCK);
+}
+
 void *simulation(void *data)
 {
     t_philo *philo;
@@ -23,7 +40,7 @@ void *simulation(void *data)
     {
         if (!get_bool(philo->table.table_mtx, philo->full))
             break ;
-        is_eating(philo); //will be done tomorrow
+        is_eating(philo);
         display_status(SLEEPING, philo);
         ft_usleep(philo->table->time_to_sleep, philo->table);
         is_thinking(philo); //will be done tomorrow

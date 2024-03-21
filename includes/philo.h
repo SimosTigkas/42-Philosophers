@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/20 13:09:28 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/21 13:26:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <sys/time.h>
+# include <stdbool.h>
 # define MAX_INT 2147483647
 
 typedef struct s_fork
@@ -53,6 +54,7 @@ typedef struct s_philo
 	t_fork			*second_fork;
 	pthread_t		thread_id;
 	t_table			*table;
+	pthread_mutex_t	philo_mtx;
 }	t_philo;
 
 typedef enum e_state
