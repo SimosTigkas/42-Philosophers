@@ -1,4 +1,4 @@
-NAME = philo
+NAME = philo.a
 
 FUNC = \
 	init_data.c \
@@ -10,19 +10,20 @@ FUNC = \
 	synchronization_utils.c \
 	display.c
 
-INC = includes
+INC = ./includes
 
 PHILO = philo
 
 OBJ = $(FUNC:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -pthread
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -I $(INC) $(OBJ) -o $(PHILO)
+	ar rcs $(NAME) $(OBJ)
 
 $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -31,7 +32,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(PHILO)
+	rm -f $(NAME) $(PHILO)
 
 re: fclean all
 
