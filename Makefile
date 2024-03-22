@@ -8,7 +8,8 @@ FUNC = \
 	auto_lock_unlock.c \
 	lets_eat_spaghetti.c \
 	synchronization_utils.c \
-	display.c
+	display.c \
+	handlers.c
 
 INC = ./includes
 

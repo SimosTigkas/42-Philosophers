@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:34:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/18 14:46:52 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:14:47 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	get_input(t_table *table, char **av)
 	table->time_to_die = ft_atol(av[2]) * 1e3;
 	table->time_to_eat = ft_atol(av[3]) * 1e3;
 	table->time_to_sleep = ft_atol(av[4]) * 1e3;
+	if (table->philo_nbr < 1)
+		ft_error("No philos, no dinner");
 	if (table->time_to_die < 6e4
 		|| table->time_to_eat < 6e4
 		|| table->time_to_sleep < 6e4)
