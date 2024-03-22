@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/03/22 14:12:32 by stigkas          ###   ########.fr       */
+=======
+/*   Updated: 2024/03/21 13:26:32 by marvin           ###   ########.fr       */
+>>>>>>> d3f43b2813e6258cf0918167af9fc9a35b5e81e0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +45,11 @@ typedef struct s_table
 	bool				end_simulation;
 	bool				threads_ready;
 	t_fork				*forks;
+<<<<<<< HEAD
 	t_philo				*philos;
+=======
+    t_philo             *philos;
+>>>>>>> d3f43b2813e6258cf0918167af9fc9a35b5e81e0
 	pthread_mutex_t		table_mtx;
 	pthread_mutex_t		display_mtx;
 }	t_table;
@@ -57,15 +65,24 @@ struct s_philo
 	pthread_t		thread_id;
 	t_table			*table;
 	pthread_mutex_t	philo_mtx;
+<<<<<<< HEAD
 };
+=======
+}	t_philo;
+>>>>>>> d3f43b2813e6258cf0918167af9fc9a35b5e81e0
 
 typedef enum e_state
 {
 	EATING,
 	SLEEPING,
 	THINKING,
+<<<<<<< HEAD
 	TAKE_FRST_FORK,
 	TAKE_SCND_FORK,
+=======
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+>>>>>>> d3f43b2813e6258cf0918167af9fc9a35b5e81e0
 	DEAD
 }	t_state;
 
@@ -87,13 +104,19 @@ typedef enum e_thread_action
 typedef enum e_time
 {
 	SEC,
+<<<<<<< HEAD
 	MLSEC,
 	MCROSEC
+=======
+	MILLISEC,
+	MICROSEC
+>>>>>>> d3f43b2813e6258cf0918167af9fc9a35b5e81e0
 }	t_time;
 
 void	ft_error(char *msg);
 void	get_input(t_table *table, char **av);
 void	init_data(t_table *table);
+<<<<<<< HEAD
 void	mutex_handler(pthread_mutex_t *mtx, t_mtx_action act);
 void	thread_handler(pthread_t *thread, void *(*f)(void *), void *data,
 			t_thread_action act);
@@ -107,5 +130,19 @@ long	getthetime(t_time time);
 bool	simulation_is_finished(t_table *table);
 void	ft_usleep(long usec, t_table *table);
 void	display_status(t_state status, t_philo *philo);
+=======
+void	mutex_hander(pthread_mutex_t mtx, t_mtx_action act);
+void	thread_hander(pthread_t *thread, void *(*routine)(void *), void *data, t_thread_action act);
+void    lets_eat_spaghetti(t_table *table);
+long 	get_long(pthread_mutex_t *mtx, long value);
+void    set_long(pthread_mutex_t *mtx, long *target, long value);
+bool 	get_bool(pthread_mutex_t *mtx, bool status);
+void    set_bool(pthread_mutex_t *mtx, bool *target, bool status);
+void    wait_the_threads_to_be_ready(t_table *table);
+long 	get_time_of_day(t_time time);
+bool    simulation_is_finished(t_table *table);
+void 	ft_usleep(long usec, t_table *table);
+void 	display_status(t_state status, t_philo *philo);
+>>>>>>> d3f43b2813e6258cf0918167af9fc9a35b5e81e0
 
 #endif
