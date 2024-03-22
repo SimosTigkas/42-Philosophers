@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/22 18:26:30 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/22 18:57:15 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ long	getthetime(t_time time);
 bool	simulation_is_finished(t_table *table);
 void	ft_usleep(long usec, t_table *table);
 void	display_status(t_state status, t_philo *philo);
-void	thread_check(int result, t_thread_action act);
-void	mutex_check(int result, t_mtx_action act);
+// void	thread_check(int result, t_thread_action act);
+// void	mutex_check(int result, t_mtx_action act);
 
 #endif
