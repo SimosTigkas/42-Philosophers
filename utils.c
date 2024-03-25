@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:50:07 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/22 18:27:10 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/25 20:14:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
+
+void clean_the_table(t_table *table)
+{
+	t_philo	*philo;
+	int		i;
+
+	i = 0;
+	while (i < table->philo_nbr)
+	{
+		philo = table->philos + i;
+		mutex_handler(&philo->philo_mtx, DESTROY);
+		i++;
+	}
+	mutex_handler(&table->display_mtx, DESTROY);
+	mutex_handler(&table->table_mtx, DESTROY);
+	free(table->forks);
+	free(table->philos);
+}
 
 void	ft_error(char *msg)
 {
@@ -49,7 +67,7 @@ void	ft_usleep(long usec, t_table *table)
 		time_passed = getthetime(MCROSEC) - start;
 		time_remained = usec - time_passed;
 		if (time_remained > 1e3)
-			usleep(usec / 2);
+			usleep(time_remained / 2);
 		else
 		{
 			while (getthetime(MCROSEC) - start < usec)

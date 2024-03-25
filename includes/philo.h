@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/22 18:57:15 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/25 22:03:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <string.h>
 # include <sys/time.h>
 # include <stdbool.h>
-# include <errno.h>
 # define MAX_INT 2147483647
 
 typedef struct s_fork
@@ -39,9 +38,11 @@ typedef struct s_table
 	long				nbr_limit_meals;
 	long				philo_nbr;
 	long				start_simulation;
+	long				nbr_of_threads_running;
 	bool				end_simulation;
 	bool				threads_ready;
 	t_fork				*forks;
+	pthread_t			death_checker;
 	t_philo				*philos;
 	pthread_mutex_t		table_mtx;
 	pthread_mutex_t		display_mtx;
@@ -99,7 +100,7 @@ void	mutex_handler(pthread_mutex_t *mtx, t_mtx_action act);
 void	thread_handler(pthread_t *thread, void *(*f)(void *), void *data,
 			t_thread_action act);
 void	lets_eat_spaghetti(t_table *table);
-long	get_long(pthread_mutex_t *mtx, long value);
+long	get_long(pthread_mutex_t *mtx, long *value);
 void	set_long(pthread_mutex_t *mtx, long *target, long value);
 bool	get_bool(pthread_mutex_t *mtx, bool status);
 void	set_bool(pthread_mutex_t *mtx, bool *target, bool status);
@@ -108,7 +109,12 @@ long	getthetime(t_time time);
 bool	simulation_is_finished(t_table *table);
 void	ft_usleep(long usec, t_table *table);
 void	display_status(t_state status, t_philo *philo);
-// void	thread_check(int result, t_thread_action act);
-// void	mutex_check(int result, t_mtx_action act);
+bool	threads_running(pthread_mutex_t *mtx, long *threads, long philo_nbr);
+void	*one_philo(void *arg);
+void    *ft_death_checker(void *data);
+void	clean_the_table(t_table *table);
+void	*simulation(void *data);
+void	check_sleep(t_philo *philo);
+void	is_thinking(t_philo *philo, bool not_started);
 
 #endif

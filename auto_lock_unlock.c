@@ -36,12 +36,12 @@ void	set_long(pthread_mutex_t *mtx, long *target, long value)
 	mutex_handler(mtx, UNLOCK);
 }
 
-long	get_long(pthread_mutex_t *mtx, long value)
+long	get_long(pthread_mutex_t *mtx, long *value)
 {
 	long	returning_value;
 
 	mutex_handler(mtx, LOCK);
-	returning_value = value;
+	returning_value = *value;
 	mutex_handler(mtx, UNLOCK);
 	return (returning_value);
 }
