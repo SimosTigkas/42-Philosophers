@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 12:50:07 by stigkas           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/03/26 11:07:36 by stigkas          ###   ########.fr       */
-=======
-/*   Updated: 2024/03/25 20:14:07 by marvin           ###   ########.fr       */
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
+/*   Created: 2024/03/26 16:40:19 by stigkas           #+#    #+#             */
+/*   Updated: 2024/03/26 16:40:25 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
 
-<<<<<<< HEAD
 void	clean_the_table(t_table *table)
-=======
-void clean_the_table(t_table *table)
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 {
 	t_philo	*philo;
 	int		i;
