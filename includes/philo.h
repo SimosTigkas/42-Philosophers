@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/03/26 11:11:53 by stigkas          ###   ########.fr       */
+=======
+/*   Updated: 2024/03/25 22:03:58 by marvin           ###   ########.fr       */
+>>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +115,11 @@ void	ft_usleep(long usec, t_table *table);
 void	display_status(t_state status, t_philo *philo);
 bool	threads_running(pthread_mutex_t *mtx, long *threads, long philo_nbr);
 void	*one_philo(void *arg);
+<<<<<<< HEAD
 void	*ft_death_checker(void *data);
+=======
+void    *ft_death_checker(void *data);
+>>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 void	clean_the_table(t_table *table);
 void	*simulation(void *data);
 void	check_sleep(t_philo *philo);

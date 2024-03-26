@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 14:56:00 by stigkas           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/03/26 11:54:25 by stigkas          ###   ########.fr       */
+=======
+/*   Updated: 2024/03/25 22:32:43 by marvin           ###   ########.fr       */
+>>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +23,13 @@ static void	get_the_forks(t_philo *philo, t_fork *forks, int i)
 	all_philos = philo->table->philo_nbr;
 	if ((philo->id % 2) == 1)
 	{
-		philo->first_fork = &forks[(i + 1) % all_philos];
-		philo->second_fork = &forks[i];
+		philo->first_fork = &forks[i];
+		philo->second_fork = &forks[(i + 1) % all_philos];
 	}
 	else
 	{
-		philo->first_fork = &forks[i];
-		philo->second_fork = &forks[(i + 1) % all_philos];
+		philo->first_fork = &forks[(i + 1) % all_philos];
+		philo->second_fork = &forks[i];
 	}
 }
 
