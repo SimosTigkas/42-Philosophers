@@ -9,7 +9,8 @@ FUNC = \
 	lets_eat_spaghetti.c \
 	synchronization_utils.c \
 	display.c \
-	handlers.c
+	handlers.c \
+	death_checker.c
 
 INC = ./includes
 

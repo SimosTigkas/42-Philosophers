@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 14:56:00 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/22 18:42:50 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:54:25 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	get_the_forks(t_philo *philo, t_fork *forks, int i)
 	long	all_philos;
 
 	all_philos = philo->table->philo_nbr;
-	if ((philo->id % 2) == 0)
+	if ((philo->id % 2) == 1)
 	{
 		philo->first_fork = &forks[(i + 1) % all_philos];
 		philo->second_fork = &forks[i];
@@ -53,6 +53,7 @@ void	init_data(t_table *table)
 	int	i;
 
 	i = 0;
+	table->nbr_of_threads_running = 0;
 	table->end_simulation = false;
 	table->threads_ready = false;
 	table->philos = (t_philo *)malloc(table->philo_nbr * sizeof(t_philo));

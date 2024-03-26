@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_lock_unlock.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 19:22:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/19 19:22:20 by marvin           ###   ########.fr       */
+/*   Created: 2024/03/26 11:08:22 by stigkas           #+#    #+#             */
+/*   Updated: 2024/03/26 11:08:22 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	set_long(pthread_mutex_t *mtx, long *target, long value)
 	mutex_handler(mtx, UNLOCK);
 }
 
-long	get_long(pthread_mutex_t *mtx, long value)
+long	get_long(pthread_mutex_t *mtx, long *value)
 {
 	long	returning_value;
 
 	mutex_handler(mtx, LOCK);
-	returning_value = value;
+	returning_value = *value;
 	mutex_handler(mtx, UNLOCK);
 	return (returning_value);
 }

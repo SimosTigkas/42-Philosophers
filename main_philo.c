@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:36:16 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/22 15:57:02 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:08:16 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 		get_input(&table, av);
 		init_data(&table);
 		lets_eat_spaghetti(&table);
+		clean_the_table(&table);
 	}
 	else
 		ft_error("Wrong_input! Try: ./philo 5 800 200 200 [5]");
