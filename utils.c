@@ -41,7 +41,6 @@ void clean_the_table(t_table *table)
 void	ft_error(char *msg)
 {
 	printf("%s\n", msg);
-	exit(EXIT_FAILURE);
 }
 
 long	getthetime(t_time time)
