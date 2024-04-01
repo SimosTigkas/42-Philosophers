@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:56:00 by stigkas           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/03/26 11:54:25 by stigkas          ###   ########.fr       */
-=======
-/*   Updated: 2024/03/25 22:32:43 by marvin           ###   ########.fr       */
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
+/*   Created: 2024/03/27 11:13:46 by marvin            #+#    #+#             */
+/*   Updated: 2024/03/28 13:40:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +48,7 @@ static void	init_the_philo(t_table *table)
 	}
 }
 
-void	init_data(t_table *table)
+int	init_data(t_table *table)
 {
 	int	i;
 
@@ -62,13 +58,13 @@ void	init_data(t_table *table)
 	table->threads_ready = false;
 	table->philos = (t_philo *)malloc(table->philo_nbr * sizeof(t_philo));
 	if (table->philos == NULL)
-		ft_error("Malloc error");
+		return (-1);
 	mutex_handler(&table->table_mtx, INIT);
 	mutex_handler(&table->display_mtx, INIT);
 	mutex_handler(&table->philos->philo_mtx, INIT);
 	table->forks = (t_fork *)malloc(table->philo_nbr * sizeof(t_fork));
 	if (table->forks == NULL)
-		ft_error("Malloc error");
+		return (-1);
 	while (i < table->philo_nbr)
 	{
 		mutex_handler(&table->forks[i].fork, INIT);
@@ -76,4 +72,5 @@ void	init_data(t_table *table)
 		i++;
 	}
 	init_the_philo(table);
+	return (0);
 }

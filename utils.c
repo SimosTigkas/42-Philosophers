@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:40:19 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/26 16:40:25 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/28 12:48:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,12 @@ void	clean_the_table(t_table *table)
 	free(table->philos);
 }
 
-void	ft_error(char *msg)
-{
-	printf("%s\n", msg);
-}
-
 long	getthetime(t_time time)
 {
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) != 0)
-		ft_error("Gettimeofday did not work as expected");
+		printf("Gettimeofday did not work as expected");
 	if (time == SEC)
 		return (tv.tv_sec + (tv.tv_usec / 1e6));
 	else if (time == MLSEC)
@@ -48,7 +43,7 @@ long	getthetime(t_time time)
 	else if (time == MCROSEC)
 		return ((tv.tv_sec * 1e6) + tv.tv_usec);
 	else
-		ft_error("Wrong input!! Try SEC, MILLISEC or MICROSEC.");
+		printf("Wrong input!! Try SEC, MILLISEC or MICROSEC.");
 	return (42);
 }
 

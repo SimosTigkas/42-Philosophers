@@ -12,11 +12,7 @@
 
 #include "./includes/philo.h"
 
-<<<<<<< HEAD
 void	is_thinking(t_philo *philo, bool not_started)
-=======
-void is_thinking(t_philo *philo, bool not_started)
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 {
 	long	thinking_time;
 	long	sleeping_time;
@@ -80,11 +76,7 @@ void	*simulation(void *data)
 	check_sleep(philo);
 	while (!simulation_is_finished(philo->table))
 	{
-<<<<<<< HEAD
 		if (get_bool(&philo->philo_mtx, philo->full))
-=======
-		if (get_bool(&philo->philo_mtx, &philo->full))
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 			break ;
 		is_eating(philo);
 		display_status(SLEEPING, philo);
@@ -102,12 +94,8 @@ void	lets_eat_spaghetti(t_table *table)
 	if (table->nbr_limit_meals == 0)
 		return ;
 	else if (table->philo_nbr == 1)
-<<<<<<< HEAD
 		thread_handler(&table->philos[0].thread_id, \
 				one_philo, &table->philos[0], CREATE);
-=======
-		thread_handler(&table->philos[0].thread_id, one_philo, &table->philos[0], CREATE);
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 	else
 	{
 		while (++i < table->philo_nbr)
@@ -122,11 +110,6 @@ void	lets_eat_spaghetti(t_table *table)
 	i = -1;
 	while (++i < table->philo_nbr)
 		thread_handler(&table->philos[i].thread_id, NULL, NULL, JOIN);
-<<<<<<< HEAD
-=======
-		i++;
-	}
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 	set_bool(&table->table_mtx, &table->end_simulation, true);
 	thread_handler(&table->death_checker, NULL, NULL, JOIN);
 }

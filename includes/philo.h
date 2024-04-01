@@ -6,11 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/03/26 11:11:53 by stigkas          ###   ########.fr       */
-=======
-/*   Updated: 2024/03/25 22:03:58 by marvin           ###   ########.fr       */
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
+/*   Updated: 2024/03/28 13:41:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +93,11 @@ typedef enum e_time
 	MCROSEC
 }	t_time;
 
-void	ft_error(char *msg);
-void	get_input(t_table *table, char **av);
-void	init_data(t_table *table);
-void	mutex_handler(pthread_mutex_t *mtx, t_mtx_action act);
+int		get_input(t_table *table, char **av);
+int		init_data(t_table *table);
+void	mutex_handler(pthread_mutex_t *mtx, t_mtx_action act); //KANE TO INT
 void	thread_handler(pthread_t *thread, void *(*f)(void *), void *data,
-			t_thread_action act);
+			t_thread_action act); //KANE TO INT
 void	lets_eat_spaghetti(t_table *table);
 long	get_long(pthread_mutex_t *mtx, long *value);
 void	set_long(pthread_mutex_t *mtx, long *target, long value);
@@ -115,11 +110,7 @@ void	ft_usleep(long usec, t_table *table);
 void	display_status(t_state status, t_philo *philo);
 bool	threads_running(pthread_mutex_t *mtx, long *threads, long philo_nbr);
 void	*one_philo(void *arg);
-<<<<<<< HEAD
 void	*ft_death_checker(void *data);
-=======
-void    *ft_death_checker(void *data);
->>>>>>> 161cb8bc798b1afbfe7a366178f859e7be1a2af7
 void	clean_the_table(t_table *table);
 void	*simulation(void *data);
 void	check_sleep(t_philo *philo);
