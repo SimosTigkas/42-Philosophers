@@ -23,9 +23,11 @@ bool	get_bool(pthread_mutex_t *mtx, bool status)
 {
 	bool	returning_status;
 
-	mtx_handler(mtx, LOCK);
+	if (!mtx_handler(mtx, LOCK))
+		return (false);
 	returning_status = status;
-	mtx_handler(mtx, UNLOCK);
+	if (!mtx_handler(mtx, UNLOCK))
+		return (false);
 	return (returning_status);
 }
 
@@ -40,9 +42,11 @@ long	get_long(pthread_mutex_t *mtx, long *value)
 {
 	long	returning_value;
 
-	mtx_handler(mtx, LOCK);
+	if (!mtx_handler(mtx, LOCK))
+		return (0);
 	returning_value = *value;
-	mtx_handler(mtx, UNLOCK);
+	if (!mtx_handler(mtx, UNLOCK))
+		return (0);
 	return (returning_value);
 }
 
