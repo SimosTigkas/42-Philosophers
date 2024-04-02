@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:34:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/02 16:33:13 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/02 16:58:07 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	get_input(t_table *table, char **av, int ac)
 		|| table->time_to_eat < 6e4
 		|| table->time_to_sleep < 6e4)
 	{
-		printf("Use values bigger than 6e4");
+		printf("Use values bigger than 6e4\n");
 		return (-1);
 	}
 	if (ac == 6 && av[5] != 0)
