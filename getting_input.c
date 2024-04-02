@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:34:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/02 16:58:07 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/02 16:59:15 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static long	ft_atol(char *str, int i, long nbr)
 		return (-2);
 	if (str[i] == '-')
 	{
-		printf("Only positive numbers are acceptable!");
+		printf("Only positive numbers are acceptable!\n");
 		return (-2);
 	}
 	if (str[i] == '+')
@@ -46,7 +46,7 @@ static long	ft_atol(char *str, int i, long nbr)
 		return (-2);
 	if ((i >= 11) || (nbr > MAX_INT))
 	{
-		printf("The number should be smaller than the INT_MAX");
+		printf("The number should be smaller than the INT_MAX\n");
 		return (-2);
 	}
 	return (nbr);
