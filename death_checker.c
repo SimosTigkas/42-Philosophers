@@ -25,7 +25,7 @@ static bool	philo_is_dead(t_philo *philo)
 	return (false);
 }
 
-void	*ft_death_checker(void *data)
+void	*is_dead(void *data)
 {
 	t_table	*table;
 	int		i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_philo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:12:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/28 13:15:29 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/02 15:15:39 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ int	main(int ac, char **av)
 
 	if (ac == 5 || ac == 6)
 	{
-		if (get_input(&table, av) == -1)
+		if (get_input(&table, av, ac) == -1)
 			printf("Wrong input!\n");
 		else
 		{
-			init_data(&table);
-			lets_eat_spaghetti(&table);
-			clean_the_table(&table);
+			if (!init_data(&table) || !lets_eat_spaghetti(&table, -1))
+				printf("It did not work, try again!!\n");
+			if (!clean_the_table(&table))
+				printf("Cleaning went wrong..\n");
 		}
 	}
 	else

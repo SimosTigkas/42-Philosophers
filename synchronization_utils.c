@@ -23,10 +23,12 @@ bool	threads_running(pthread_mutex_t *mtx, long *threads, long philo_nbr)
 	bool	all_threads;
 
 	all_threads = false;
-	mutex_handler(mtx, LOCK);
+	if (!mtx_handler(mtx, LOCK))
+		return (false);
 	if (*threads == philo_nbr)
 		all_threads = true;
-	mutex_handler(mtx, UNLOCK);
+	if (!mtx_handler(mtx, UNLOCK))
+		return (false);
 	return (all_threads);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/28 13:41:52 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/02 15:16:10 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ typedef enum e_time
 	MCROSEC
 }	t_time;
 
-int		get_input(t_table *table, char **av);
+int		get_input(t_table *table, char **av, int ac);
 int		init_data(t_table *table);
-void	mutex_handler(pthread_mutex_t *mtx, t_mtx_action act); //KANE TO INT
-void	thread_handler(pthread_t *thread, void *(*f)(void *), void *data,
-			t_thread_action act); //KANE TO INT
-void	lets_eat_spaghetti(t_table *table);
+int		mtx_handler(pthread_mutex_t *mtx, t_mtx_action act);
+int		thread_handler(pthread_t *thread, void *(*f)(void *), void *data,
+			t_thread_action act);
+int		lets_eat_spaghetti(t_table *table, int i);
 long	get_long(pthread_mutex_t *mtx, long *value);
 void	set_long(pthread_mutex_t *mtx, long *target, long value);
 bool	get_bool(pthread_mutex_t *mtx, bool status);
@@ -109,11 +109,13 @@ bool	simulation_is_finished(t_table *table);
 void	ft_usleep(long usec, t_table *table);
 void	display_status(t_state status, t_philo *philo);
 bool	threads_running(pthread_mutex_t *mtx, long *threads, long philo_nbr);
-void	*one_philo(void *arg);
-void	*ft_death_checker(void *data);
-void	clean_the_table(t_table *table);
+void	*one(void *arg);
+void	*is_dead(void *data);
+int		clean_the_table(t_table *table);
 void	*simulation(void *data);
 void	check_sleep(t_philo *philo);
 void	is_thinking(t_philo *philo, bool not_started);
+int		th_error(int thread_err, t_thread_action act);
+int		mtx_error(int mtx_err, t_mtx_action act);
 
 #endif

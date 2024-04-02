@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getting_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:34:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/28 13:38:56 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/02 13:43:59 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static long	ft_atol(char *str, int i, long nbr)
 		i++;
 	}
 	if (!ft_isdigit(str[i]))
-			return (-2);
+		return (-2);
 	if ((i >= 11) || (nbr > MAX_INT))
 	{
 		printf("The number should be smaller than the INT_MAX");
@@ -52,7 +52,7 @@ static long	ft_atol(char *str, int i, long nbr)
 	return (nbr);
 }
 
-int	get_input(t_table *table, char **av)
+int	get_input(t_table *table, char **av, int ac)
 {
 	table->philo_nbr = ft_atol(av[1], 0, 0);
 	table->time_to_die = ft_atol(av[2], 0, 0) * 1e3;
@@ -74,9 +74,9 @@ int	get_input(t_table *table, char **av)
 		printf("Use values bigger than 6e4");
 		return (-1);
 	}
-	if (av[5])
-		table->nbr_limit_meals = ft_atol(av[5]);
-	else
-		table->nbr_limit_meals = -1;
+	if (ac == 6 && av[5] != 0)
+		table->nbr_limit_meals = ft_atol(av[5], 0, 0);
+	else if ((ac == 6) && (av[5] == 0))
+		return (-1);
 	return (0);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:40:19 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/28 12:48:37 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/02 13:25:05 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
 
-void	clean_the_table(t_table *table)
+int	clean_the_table(t_table *table)
 {
 	t_philo	*philo;
 	int		i;
@@ -21,13 +21,16 @@ void	clean_the_table(t_table *table)
 	while (i < table->philo_nbr)
 	{
 		philo = table->philos + i;
-		mutex_handler(&philo->philo_mtx, DESTROY);
+		if (!mtx_handler(&philo->philo_mtx, DESTROY))
+			return (0);
 		i++;
 	}
-	mutex_handler(&table->display_mtx, DESTROY);
-	mutex_handler(&table->table_mtx, DESTROY);
+	if (!mtx_handler(&table->display_mtx, DESTROY)
+		|| !mtx_handler(&table->table_mtx, DESTROY))
+		return (0);
 	free(table->forks);
 	free(table->philos);
+	return (1);
 }
 
 long	getthetime(t_time time)

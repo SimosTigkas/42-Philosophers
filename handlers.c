@@ -3,58 +3,106 @@
 /*                                                        :::      ::::::::   */
 /*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:42:48 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/28 11:42:21 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/02 11:12:39 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
 
-void	mutex_handler(pthread_mutex_t *mtx, t_mtx_action act)
+int	mtx_error(int mtx_err, t_mtx_action act)
+{
+	if (!mtx_err && act == INIT)
+	{
+		printf("The values specified by attr are not valid\n");
+		return (0);
+	}
+	else if (!mtx_err && act == DESTROY)
+	{
+		printf("Mutex could not be destroyed\n");
+		return (0);
+	}
+	else if (!mtx_err && act == LOCK)
+	{
+		printf("Mutex could not be locked\n");
+		return (0);
+	}
+	else if (!mtx_err && act == UNLOCK)
+	{
+		printf("Mutex could not be unlocked\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	mtx_handler(pthread_mutex_t *mtx, t_mtx_action act)
 {
 	if (act == INIT)
 	{
-		if (pthread_mutex_init(mtx, NULL) != 0)
-			printf("The valuse specified by attr is not valid\n");
+		if (!mtx_error(pthread_mutex_init(mtx, NULL), INIT))
+			return (0);
 	}
 	else if (act == DESTROY)
 	{
-		if (pthread_mutex_destroy(mtx) != 0)
-			printf("Mutex could not be destroyed\n");
+		if (!mtx_error(pthread_mutex_destroy(mtx), DESTROY))
+			return (0);
 	}
 	else if (act == LOCK)
 	{
-		if (pthread_mutex_lock(mtx) != 0)
-			printf("Mutex could not be locked\n");
+		if (!mtx_error(pthread_mutex_lock(mtx), LOCK))
+			return (0);
 	}
 	else if (act == UNLOCK)
 	{
 		if (pthread_mutex_unlock(mtx) != 0)
-			printf("Mutex could not be unlocked\n");
+			return (0);
 	}
 	else
+	{
 		printf("Wrong mutex action");
+		return (0);
+	}
 }
 
-void	thread_handler(pthread_t *thread, void *(*routine)(void *),
+int	th_error(int thread_err, t_thread_action act)
+{
+	if (!thread_err && act == CREATE)
+	{
+		printf("Thread could not be created\n");
+		return (0);
+	}
+	else if (!thread_err && act == JOIN)
+	{
+		printf("Thread could not be joined\n");
+		return (0);
+	}
+	else if (!thread_err && act == DETACH)
+	{
+		printf("Thread could not be detached\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	thread_handler(pthread_t *thread, void *(*routine)(void *),
 		void *data, t_thread_action act)
 {
 	if (act == CREATE)
 	{
-		if (pthread_create(thread, NULL, routine, data) != 0)
-			printf("Thread could not be created\n");
+		if (!th_error(pthread_create(thread, NULL, routine, data), CREATE))
+			return (0);
 	}
 	else if (act == JOIN)
 	{
-		if (pthread_join(*thread, NULL) != 0)
-			printf("Thread could not be joined\n");
+		if (!th_error(pthread_join(*thread, NULL), JOIN))
+			return (0);
 	}
 	else if (act == DETACH)
 	{
-		if (pthread_detach(*thread) != 0)
-			printf("Thread could not be detached\n");
+		if (!th_error(pthread_detach(*thread), DETACH))
+			return (0);
 	}
 	else
 		printf("Wrong thread action"
