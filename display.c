@@ -19,7 +19,7 @@ void	display_status(t_state status, t_philo *philo)
 	time_has_passed = getthetime(MLSEC) - philo->table->start_simulation;
 	if (philo->full)
 		return ;
-	mutex_handler(&philo->table->display_mtx, LOCK);
+	mtx_handler(&philo->table->display_mtx, LOCK);
 	if (status == TAKE_FRST_FORK && !simulation_is_finished(philo->table))
 		printf("%ld %d has taken the 1st fork %d.\n", time_has_passed,
 			philo->id, philo->first_fork->fork_id);
@@ -35,5 +35,5 @@ void	display_status(t_state status, t_philo *philo)
 		printf("%ld %d is thinking\n", time_has_passed, philo->id);
 	else if (status == DEAD)
 		printf("%ld %d died\n", time_has_passed, philo->id);
-	mutex_handler(&philo->table->display_mtx, UNLOCK);
+	mtx_handler(&philo->table->display_mtx, UNLOCK);
 }

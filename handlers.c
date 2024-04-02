@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:42:48 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/02 11:12:39 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/02 15:34:06 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ int	mtx_handler(pthread_mutex_t *mtx, t_mtx_action act)
 			return (0);
 	}
 	else
-	{
-		printf("Wrong mutex action");
 		return (0);
-	}
+	return (1);
 }
 
 int	th_error(int thread_err, t_thread_action act)
@@ -105,6 +103,10 @@ int	thread_handler(pthread_t *thread, void *(*routine)(void *),
 			return (0);
 	}
 	else
+	{
 		printf("Wrong thread action"
 			"Use CREATE, JOIN or DETACH\n");
+		return (0);
+	}
+	return (1);
 }
