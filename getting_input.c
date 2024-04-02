@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:34:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/02 13:43:59 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/02 16:33:13 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static long	ft_atol(char *str, int i, long nbr)
 		nbr = 10 * nbr + str[i] - '0';
 		i++;
 	}
-	if (!ft_isdigit(str[i]))
+	if (!ft_isdigit(str[i]) && str[i] != '\0')
 		return (-2);
 	if ((i >= 11) || (nbr > MAX_INT))
 	{
