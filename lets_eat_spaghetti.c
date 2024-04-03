@@ -105,11 +105,9 @@ int	lets_eat_spaghetti(t_table *table, int i)
 	else
 	{
 		while (++i < table->philo_nbr)
-		{
 			if (!thread_handler(&table->philos[i].thread_id, simulation,
 					&table->philos[i], CREATE))
 				return (0);
-		}
 	}
 	if (!thread_handler(&table->death_checker, is_dead, table, CREATE))
 		return (0);
@@ -117,10 +115,8 @@ int	lets_eat_spaghetti(t_table *table, int i)
 	set_bool(&table->table_mtx, &table->threads_ready, true);
 	i = -1;
 	while (++i < table->philo_nbr)
-	{
 		if (!thread_handler(&table->philos[i].thread_id, NULL, NULL, JOIN))
 			return (0);
-	}
 	set_bool(&table->table_mtx, &table->end_simulation, true);
 	if (!thread_handler(&table->death_checker, NULL, NULL, JOIN))
 		return (0);
