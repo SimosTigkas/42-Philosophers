@@ -21,14 +21,13 @@ void	display_status(t_state status, t_philo *philo)
 		return ;
 	mtx_handler(&philo->table->display_mtx, LOCK);
 	if (status == TAKE_FRST_FORK && !simulation_is_finished(philo->table))
-		printf("%ld %d has taken the 1st fork %d.\n", time_has_passed,
-			philo->id, philo->first_fork->fork_id);
+		printf("%ld %d has taken a fork\n", time_has_passed,
+			philo->id);
 	else if (status == TAKE_SCND_FORK && !simulation_is_finished(philo->table))
-		printf("%ld %d has taken the 2nd fork %d.\n", time_has_passed,
-			philo->id, philo->second_fork->fork_id);
+		printf("%ld %d has taken a fork\n", time_has_passed,
+			philo->id);
 	else if (status == EATING && !simulation_is_finished(philo->table))
-		printf("%ld %d is eating the %ld meal.\n", time_has_passed,
-			philo->id, philo->meals_counter);
+		printf("%ld %d is eating\n", time_has_passed, philo->id);
 	else if (status == SLEEPING && !simulation_is_finished(philo->table))
 		printf("%ld %d is sleeping\n", time_has_passed, philo->id);
 	else if (status == THINKING && !simulation_is_finished(philo->table))
