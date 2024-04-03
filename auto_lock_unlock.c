@@ -12,11 +12,13 @@
 
 #include "./includes/philo.h"
 
-void	set_bool(pthread_mutex_t *mtx, bool *target, bool status)
+void	*set_bool(pthread_mutex_t *mtx, bool *target, bool status)
 {
-	mtx_handler(mtx, LOCK);
+	if (!mtx_handler(mtx, LOCK))
+		return (NULL);
 	*target = status;
 	mtx_handler(mtx, UNLOCK);
+	return (NULL);
 }
 
 bool	get_bool(pthread_mutex_t *mtx, bool status)
@@ -31,11 +33,13 @@ bool	get_bool(pthread_mutex_t *mtx, bool status)
 	return (returning_status);
 }
 
-void	set_long(pthread_mutex_t *mtx, long *target, long value)
+void	*set_long(pthread_mutex_t *mtx, long *target, long value)
 {
-	mtx_handler(mtx, LOCK);
+	if (!mtx_handler(mtx, LOCK))
+		return (NULL);
 	*target = value;
 	mtx_handler(mtx, UNLOCK);
+	return (NULL);
 }
 
 long	get_long(pthread_mutex_t *mtx, long *value)

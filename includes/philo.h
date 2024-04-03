@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:25:41 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/02 15:16:10 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/03 11:17:11 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ int		thread_handler(pthread_t *thread, void *(*f)(void *), void *data,
 			t_thread_action act);
 int		lets_eat_spaghetti(t_table *table, int i);
 long	get_long(pthread_mutex_t *mtx, long *value);
-void	set_long(pthread_mutex_t *mtx, long *target, long value);
+void	*set_long(pthread_mutex_t *mtx, long *target, long value);
 bool	get_bool(pthread_mutex_t *mtx, bool status);
-void	set_bool(pthread_mutex_t *mtx, bool *target, bool status);
+void	*set_bool(pthread_mutex_t *mtx, bool *target, bool status);
 void	wait_the_threads_to_be_ready(t_table *table);
 long	getthetime(t_time time);
 bool	simulation_is_finished(t_table *table);

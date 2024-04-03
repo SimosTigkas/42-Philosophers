@@ -81,7 +81,7 @@ void	*simulation(void *data)
 	philo->table->nbr_of_threads_running++;
 	if (!mtx_handler(&philo->table->table_mtx, UNLOCK))
 		return (NULL);
-	check_sleep(philo); //might need to chnge something
+	check_sleep(philo);
 	while (!simulation_is_finished(philo->table))
 	{
 		if (get_bool(&philo->philo_mtx, philo->full)
