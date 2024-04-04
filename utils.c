@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:40:19 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/02 13:25:05 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/04 14:10:52 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_usleep(long usec, t_table *table)
 			break ;
 		time_passed = getthetime(MCROSEC) - start;
 		time_remained = usec - time_passed;
-		if (time_remained > 1e3)
+		if (time_remained > 1e4)
 			usleep(time_remained / 2);
 		else
 		{

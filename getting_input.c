@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:34:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/02 16:59:15 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/04 13:07:35 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	get_input(t_table *table, char **av, int ac)
 		printf("Use values bigger than 6e4\n");
 		return (-1);
 	}
-	if (ac == 6 && av[5] != 0)
+	if (ac == 6 && ft_atol(av[5], 0, 0) > 0)
 		table->nbr_limit_meals = ft_atol(av[5], 0, 0);
-	else if ((ac == 6) && (av[5] == 0))
+	else if (ac == 6)
 		return (-1);
 	return (0);
 }
