@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:34:15 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/04 13:07:35 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/05 13:05:16 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ int	get_input(t_table *table, char **av, int ac)
 		printf("No philos, no dinner\n");
 		return (-1);
 	}
-	if (table->time_to_die == -2 * 1e3
-		|| table->time_to_eat == -2 * 1e3
-		|| table->time_to_sleep == -2 * 1e3)
+	if (table->philo_nbr == -2)
 		return (-1);
 	else if (table->time_to_die < 6e4
 		|| table->time_to_eat < 6e4
