@@ -12,7 +12,6 @@
 
 #include "./includes/philo.h"
 
-
 static bool	philo_is_dead(t_philo *philo)
 {
 	long	time_passed;

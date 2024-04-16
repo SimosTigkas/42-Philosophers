@@ -6,12 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:42:48 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/16 09:39:19 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:42:04 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
-
 
 int	mtx_error(int mtx_err, t_mtx_action act)
 {

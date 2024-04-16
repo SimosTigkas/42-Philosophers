@@ -6,12 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:40:19 by stigkas           #+#    #+#             */
-/*   Updated: 2024/04/16 09:40:03 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:42:20 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
-
 
 int	clean_the_table(t_table *table)
 {

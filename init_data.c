@@ -6,12 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:13:46 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/16 09:39:21 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:42:05 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
-
 
 static void	get_the_forks(t_philo *philo, t_fork *forks, int i)
 {
