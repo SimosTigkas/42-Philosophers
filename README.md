@@ -79,9 +79,11 @@ A death announcement should occur within 10ms of the philosopher's actual death.
 Mandatory Part
 
 To run the mandatory part of the assignment, use the following command:
+
 ```./philo <philo_nbr> <time_to_die> <time_to_eat> <time_to_sleep> ( <number_of_times_each_philosopher_must_eat>)```
 
 ## Example:
+
 ```./philo 190 900 200 200 10```
 
 ## Note:
