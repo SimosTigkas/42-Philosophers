@@ -1,4 +1,4 @@
-### Dining Philosophers Problem
+### 42-Philosophers
 
 This is a solution to the Dining Philosophers Problem, where a group of philosophers sit at a round table, alternating between eating, thinking, and sleeping. The goal is to ensure that no philosopher starves while following specific rules.
 
