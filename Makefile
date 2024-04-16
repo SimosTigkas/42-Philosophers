@@ -1,4 +1,4 @@
-NAME = philo.a
+NAME = philo
 
 FUNC = \
 	init_data.c \
@@ -14,18 +14,18 @@ FUNC = \
 
 INC = ./includes
 
-PHILO = philo
+# PHILO = philo
 
 OBJ = $(FUNC:.c=.o)
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pthread
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -I $(INC) $(OBJ) -o $(PHILO)
-	ar rcs $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -I $(INC) $(OBJ) -o $(NAME)
+# ar rcs $(NAME) $(OBJ)
 
 $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -34,7 +34,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME) $(PHILO)
+	rm -f $(NAME)
 
 re: fclean all
 
