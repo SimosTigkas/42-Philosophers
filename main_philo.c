@@ -6,11 +6,12 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:12:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/02 16:48:21 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:39:29 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/philo.h"
+
 
 int	main(int ac, char **av)
 {

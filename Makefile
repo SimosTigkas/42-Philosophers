@@ -14,8 +14,6 @@ FUNC = \
 
 INC = ./includes
 
-# PHILO = philo
-
 OBJ = $(FUNC:.c=.o)
 
 CC = cc
@@ -25,7 +23,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -I $(INC) $(OBJ) -o $(NAME)
-# ar rcs $(NAME) $(OBJ)
 
 $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

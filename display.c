@@ -12,6 +12,7 @@
 
 #include "./includes/philo.h"
 
+
 void	display_status(t_state status, t_philo *philo)
 {
 	long	time_has_passed;

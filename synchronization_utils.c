@@ -12,6 +12,7 @@
 
 #include "./includes/philo.h"
 
+
 void	wait_the_threads_to_be_ready(t_table *table)
 {
 	while (!get_bool(&table->table_mtx, table->threads_ready))

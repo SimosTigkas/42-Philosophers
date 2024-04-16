@@ -12,6 +12,7 @@
 
 #include "./includes/philo.h"
 
+
 void	is_thinking(t_philo *philo, bool not_started)
 {
 	long	thinking_time;

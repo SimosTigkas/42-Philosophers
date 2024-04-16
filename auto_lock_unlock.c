@@ -12,6 +12,7 @@
 
 #include "./includes/philo.h"
 
+
 void	*set_bool(pthread_mutex_t *mtx, bool *target, bool status)
 {
 	if (!mtx_handler(mtx, LOCK))
